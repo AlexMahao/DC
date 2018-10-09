@@ -1,0 +1,111 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : test
+Source Server Version : 50125
+Source Host           : localhost:3306
+Source Database       : test
+
+Target Server Type    : MYSQL
+Target Server Version : 50125
+File Encoding         : 65001
+
+Date: 2018-10-09 14:19:24
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `t_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_comment`;
+CREATE TABLE `t_comment` (
+`id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+`user_id`  bigint(20) NOT NULL COMMENT '用户id' ,
+`content`  varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '评论内容' ,
+`channel`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '渠道 （1:信息 2:心情）' ,
+`channel_id`  bigint(20) NULL DEFAULT NULL COMMENT '渠道id' ,
+`create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`praise_count`  int(20) NULL DEFAULT NULL COMMENT '点赞数' ,
+`status`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '状态（0:屏蔽 1:正常）' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=1
+
+;
+
+
+
+-- ----------------------------
+-- Table structure for `t_information`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_information`;
+CREATE TABLE `t_information` (
+`id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+`title`  varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题' ,
+`type`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型（1.2.3.4.）' ,
+`content`  varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容' ,
+`browse_count`  bigint(20) NULL DEFAULT NULL COMMENT '浏览次数' ,
+`user_id`  bigint(20) NULL DEFAULT NULL COMMENT '用户id' ,
+`create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`status`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '状态  （1:正常  2:置顶）' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=1
+
+;
+
+
+-- ----------------------------
+-- Table structure for `t_pour`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_pour`;
+CREATE TABLE `t_pour` (
+`id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+`user_id`  bigint(20) NOT NULL COMMENT '用户id' ,
+`content`  varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容' ,
+`image_url`  varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片url' ,
+`browse_count`  bigint(20) NULL DEFAULT NULL COMMENT '浏览次数' ,
+`parise_count`  bigint(20) NULL DEFAULT NULL COMMENT '点赞次数' ,
+`create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`status`  char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '状态 （0:屏蔽 1:正常）' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=1
+
+;
+
+
+
+-- ----------------------------
+-- Table structure for `t_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user` (
+`id`  bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+`user_id`  bigint(20) NOT NULL COMMENT '用户id' ,
+`nick_name`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户昵称' ,
+`sex`  char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '性别(1:男；2：女)' ,
+`head_image_url`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户头像地址' ,
+`user_from`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户来源' ,
+`open_id`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '微信授权登录' ,
+`token`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '授权token' ,
+`create_time`  datetime NULL DEFAULT NULL COMMENT '创建时间' ,
+`last_login_time`  datetime NULL DEFAULT NULL COMMENT '上次登录时间' ,
+`status`  char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '账号状态（0:禁言 1:正常）' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=1
+
+;
+
+
+
